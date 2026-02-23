@@ -84,6 +84,18 @@
   @apply prose-li:relative;
 }
 
+.content img {
+  @apply h-auto bg-gray-200 p-4 my-0 xl:px-32 xl:py-16;
+  width: 100vw;
+  max-width: 100vw;
+  margin-left: 50%;
+  transform: translateX(-50%);
+}
+
+.content img + img {
+  @apply pt-0;
+}
+
 /* banner */
 .banner {
   @apply relative bg-cover bg-center bg-no-repeat py-[100px] lg:pt-[230px] lg:pb-28;

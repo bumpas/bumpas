@@ -4,9 +4,11 @@ description: "A look at the Crocs Okra Design System: inception, tech stack, con
 date: 2026-02-10T05:00:00Z
 author: "Andrew Bumpas"
 tags: ["design system", "React", "Storybook", "tokens", "CSS Modules", "SVGR"]
-image: "/images/post/intro.png"
+image: "/images/post/okra/intro.png"
 categories: ["Portfolio"]
 ---
+
+import { Image } from 'astro:assets';
 
 Okra was initiated in August 2023 with a Next.js + Storybook bootstrap and evolved into a multi-brand design system serving Crocs and Heydude. The component library is built with React 18 and SCSS, with design tokens compiled via Style Dictionary and foundations organized per brand. Icons are generated and optimized via SVGR/SVGO, with a dedicated icons library. Documentation is powered by Storybook 7 (MDX/CSF). Bundling uses Webpack for the site and Rollup for library distribution; the repo is standardized with Prettier, Stylelint, and ESLint, adopted CSS Modules, and publishes MIT-licensed packages to npm. Emotion and MUI are used selectively for styling and documentation UI.
 
@@ -15,6 +17,34 @@ Adopted across Crocs & HeyDude; 27 releases; 40+ components; WCAG-compliant; npm
 </Notice>
 
 <Button label="View Okra Storybook" style="outline" link="https://crocs-dev.bitbucket.io/okra/"></Button>
+
+<Image 
+  src="/images/post/okra/okra-color-base.png" 
+  alt="Okra design system color base tokens" 
+  width={2822}
+  height={1440} 
+/>
+
+<Image 
+  src="/images/post/okra/okra-card.png" 
+  alt="Okra card component" 
+  width={2968}
+  height={1040} 
+/>
+
+<Image 
+  src="/images/post/okra/okra-story-card.png" 
+  alt="Okra Storybook card documentation" 
+  width={2716}
+  height={1424} 
+/>
+
+<Image 
+  src="/images/post/okra/okra-toast.png" 
+  alt="Okra toast component" 
+  width={2822}
+  height={1060} 
+/>
 
 ## Highlights
 
