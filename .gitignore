@@ -23,3 +23,7 @@ pnpm-debug.log*
 
 # Generated PDF resumes
 *.pdf
+
+# Vercel deployment files
+.vercel
+.env*.local
