@@ -9,13 +9,14 @@
     "preview": "astro preview",
     "check": "astro check",
     "format": "prettier -w .",
-  "resume": "python3 scripts/generate_resume_pdf.py --start-line 14 --header \"ANDREW BUMPAS\""
+    "resume": "python3 scripts/generate_resume_pdf.py --start-line 14 --header \"ANDREW BUMPAS\""
   },
   "dependencies": {
     "@astrojs/check": "^0.9.4",
     "@astrojs/mdx": "^4.3.7",
     "@astrojs/rss": "^4.0.12",
     "@tailwindcss/vite": "^4.0.14",
+    "@vercel/analytics": "^2.0.1",
     "astro": "^5.16.4",
     "astro-auto-import": "^0.4.4",
     "astro-font": "^1.0.0",
