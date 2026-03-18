@@ -10,7 +10,7 @@
 
 ## Overview
 
-This repo powers <a href="https://andrewbumpas.com" target="_blank" rel="nofollow">andrewbumpas.com</a>, a static site built with Astro for:
+This repo powers <a href="https://andrewbumpas.com" rel="nofollow">andrewbumpas.com</a>, a static site built with Astro for:
 
 - Portfolio posts (case studies like Okra Design System)
 - Blog articles

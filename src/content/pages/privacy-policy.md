@@ -2,7 +2,7 @@
 title: Privacy Policy
 ---
 
-_Last updated: October 15, 2025_
+_Last updated: March 18, 2026_
 
 Hey there — thanks for visiting **andrewbumpas.com**.  
 Your privacy matters, and I want to be upfront about what kind of information this site collects, how it’s used, and how it’s kept safe.
@@ -42,17 +42,16 @@ Your info will **never be sold, traded, or shared** with anyone else for marketi
 
 ## 3. Cookies & Analytics
 
-This site may use tools like **Google Analytics** or similar services to see how people use the site — things like page views and visit duration.  
-These tools use cookies (small text files stored in your browser) to collect that info.
+This site uses **Vercel Analytics** to understand how visitors use the site — things like page views and visit duration. Vercel Analytics is privacy-friendly by design: it does not use cookies and does not collect personally identifiable information.
 
-You can clear or disable cookies anytime in your browser settings — the site will still work just fine.
+You can learn more about how Vercel Analytics handles data at [vercel.com/docs/analytics/privacy-policy](https://vercel.com/docs/analytics/privacy-policy).
 
 ## 4. Third-Party Services
 
 andrewbumpas.com may rely on a few trusted services to function, like:
 
-- A web hosting provider (for storing and serving the site)
-- Google Analytics (for anonymous traffic stats)
+- A web hosting provider — this site is hosted on **Vercel** (for storing and serving the site)
+- Vercel Analytics (for anonymous, cookieless traffic stats)
 
 These third parties have their own privacy policies, and they only collect what’s needed to provide their services.
 
