@@ -1,7 +1,7 @@
 {
   "site": {
     "title": "Bumpas",
-    "base_url": "https://bumpas.github.io",
+    "base_url": "https://andrewbumpas.com",
     "base_path": "/",
     "trailing_slash": false,
     "favicon": "/images/favicon.png",
@@ -18,7 +18,7 @@
 
   "params": {
     "contact_form_action": "#",
-    "copyright": "© 2025 Bumpas"
+    "copyright": "© 2026 Bumpas"
   },
 
   "metadata": {
