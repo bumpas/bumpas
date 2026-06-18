@@ -11,28 +11,28 @@ banner:
 
 ---
 
-<h3 className='mb-0'>Senior Frontend Engineer</h3>
+<h3 className='mb-0'>Digital Experience & Design Systems Leader</h3>
 
 Remote / Colorado | 📧 bumpas@andrewbumpas.com | 📞 970.819.4888
 
 ---
 
 ### Professional Summary
-Senior frontend engineer and design systems leader with over 15 years of experience building and scaling global ecommerce platforms. I bring a strong balance of hands-on frontend engineering and technical leadership, specializing in design systems, accessibility, and performance. Passionate about mentoring developers, improving processes, and partnering closely with design and product teams to create intuitive, inclusive digital experiences.
+Digital experience leader with 15+ years creating scalable ecommerce and web experiences across global brands. I specialize in building design systems, modernizing digital workflows, and bridging design, engineering, product, and marketing teams to deliver consistent, accessible experiences at scale.
 
 ---
 
 ### Areas of Expertise
-Frontend Architecture | Design Systems | Accessibility | Performance Optimization | CMS and Ecommerce Integration | SEO and Experimentation | UX/UI Principles | Process Improvement | Communication and Collaboration | Empathy-driven Leadership & Mentoring
+Digital Experience Strategy | Design Systems & Scalable Patterns | Design Systems & Processes | UX/Product Collaboration | Accessibility & Inclusive Design | Creative Workflow Modernization | Frontend Architecture | Enterprise Web Platforms | Cross-Functional Leadership | Team Development
 
 --- 
 
 ### Technical Skills
-- **Frontend**: HTML, CSS, SASS, JavaScript (ES6+), React, Node.js, npm, REST APIs
-- **Ecommerce and CMS**: Salesforce Commerce Cloud (SFCC), Shopify, WordPress, Contentstack
-- **Design Systems and UX**: Storybook, Style Dictionary, Figma, Adobe Creative Suite, Optimizely
-- **Best Practices**: Accessibility (WCAG), Internationalization (i18n), Web Performance, SEO
-- **Tools**: Git, Jira, Confluence, CI/CD, Webpack, ESLint, Prettier, Google Analytics, AI Assisted Development
+- **Design Systems & Creative Technology**: Design Systems Architecture, Storybook, Style Dictionary, Design Tokens, Component Libraries, Figma, Adobe Creative Suite, UX Collaboration, Design System Standards & Adoption
+- **Digital Experience Platforms**: Salesforce Commerce Cloud (SFCC), Shopify, WordPress, Contentstack, Enterprise CMS, Ecommerce Platforms, Content Workflows
+- **Frontend Development**: HTML, CSS, SASS, JavaScript (ES6+), React, Node.js, npm, REST APIs, Frontend Architecture
+- **Experience Quality & Best Practices**: Accessibility (WCAG), Inclusive Design, Internationalization (i18n), Web Performance, SEO, Experimentation & Optimization
+- **Workflow & Collaboration Tools**: Git, Jira, Confluence, CI/CD, Webpack, ESLint, Prettier, Google Analytics, AI-Assisted Development & Workflow Optimization
 
 ---
 
@@ -43,20 +43,20 @@ Frontend Architecture | Design Systems | Accessibility | Performance Optimizatio
 Remote / Broomfield, CO (April 2020 - September 2025)
 
 **Senior Manager, Frontend and Design Systems** | April 2024 - September 2025
- - Led frontend engineering and design system strategy across global ecommerce storefronts, supporting multiple regions and brands.
- - Built and scaled the **Okra design system**, partnering with UX and product to improve UI consistency, accessibility compliance, and development velocity across teams.
- - Established frontend standards and best practices focused on performance, accessibility (WCAG), and maintainability.
- - Mentored and coached frontend engineers through code reviews, architectural guidance, and career development.
+ - Led digital experience strategy and design system evolution across global ecommerce storefronts, establishing scalable patterns, standards, and workflows across multiple regions and brands.
+ - Built and scaled the **Okra design system** in partnership with UX and product teams, establishing reusable patterns, accessibility standards, and workflows that improved consistency and delivery velocity across teams.
+ - Established digital experience standards focused on accessibility (WCAG), performance, scalability, and long-term maintainability.
+ - Led team development through mentorship, coaching, feedback, and technical direction, fostering stronger engineering practices and cross-functional collaboration.
  - Remained hands-on in frontend architecture, design system contributions, and technical decision-making.
 
 **Manager, Digital Development** | March 2023 - April 2024
-- Owned the frontend roadmap and evolution of the design system across Salesforce Commerce Cloud storefronts.
+- Owned the digital experience roadmap and evolution of the design system across Salesforce Commerce Cloud storefronts, balancing speed of delivery with consistency, accessibility, and maintainability.
 - Designed and delivered reusable frontend frameworks that reduced design-to-development friction and improved cross-team collaboration.
 - Partnered closely with UX, product, and QA to align technical solutions with user experience and business goals.
 - Helped scale frontend practices across distributed teams while maintaining code quality and consistency.
 
 **Senior Digital Developer, SFCC** | September 2021 - March 2023
-- Developed and maintained core frontend components within Salesforce Commerce Cloud, supporting high-traffic global ecommerce sites.
+- Contributed to scalable component libraries and frontend patterns supporting high-traffic global ecommerce experiences.
 - Improved frontend performance, scalability, and accessibility through component refactors and architectural enhancements.
 - Collaborated with global teams to ensure consistent UI patterns and localized experiences across regions.
 
@@ -76,8 +76,8 @@ Fort Collins, CO (March 2009 - April 2020)
 - Supported experimentation and optimization efforts to improve engagement and conversion.
 
 **Frontend Developer / UX Designer** | March 2013 - November 2015
-- Served as a hybrid frontend engineer and UX/UI designer across OtterBox and LifeProof ecommerce platforms.
-- Led development of a pattern library that improved UI consistency and accelerated design-to-development workflows.
+- Served as a hybrid frontend engineer and UX/UI designer, bridging brand, product, and engineering teams to create scalable ecommerce experiences.
+- Created and evolved a pattern library that established reusable design patterns, improved UI consistency, and accelerated design-to-development workflows.
 - Created wireframes, prototypes, and high-fidelity designs, translating them into accessible, performant frontend implementations.
 - Designed and implemented A/B tests to evaluate UX improvements and increase user engagement and conversion.
 - Acted as a bridge between design, engineering, and marketing, strengthening cross-functional collaboration.
