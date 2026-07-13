@@ -18,21 +18,21 @@ Remote / Colorado | 📧 bumpas@andrewbumpas.com | 📞 970.819.4888
 ---
 
 ### Professional Summary
-Digital experience leader with 15+ years creating scalable ecommerce and web experiences across global brands. I specialize in building design systems, modernizing digital workflows, and bridging design, engineering, product, and marketing teams to deliver consistent, accessible experiences at scale.
+Digital experience and design systems leader with 15+ years building scalable ecommerce and web experiences across global brands. I specialize in evolving design systems, improving design-to-development workflows, and partnering across design, engineering, product, and accessibility to deliver consistent, performant, and inclusive experiences at scale.
 
 ---
 
 ### Areas of Expertise
-Digital Experience Strategy | Design Systems & Scalable Patterns | Design Systems & Processes | UX/Product Collaboration | Accessibility & Inclusive Design | Creative Workflow Modernization | Frontend Architecture | Enterprise Web Platforms | Cross-Functional Leadership | Team Development
+Design System Ownership & Governance | Design Tokens & Scalable Styling Systems | Component Architecture & Reusable UI Patterns | UX/Product/Engineering Collaboration | Accessibility (WCAG) & Inclusive Design | Frontend Performance & Maintainability | Enterprise Ecommerce Platforms | Workflow Automation & Developer Experience | Cross-Functional Leadership | Team Mentorship
 
 --- 
 
 ### Technical Skills
-- **Design Systems & Creative Technology**: Design Systems Architecture, Storybook, Style Dictionary, Design Tokens, Component Libraries, Figma, Adobe Creative Suite, UX Collaboration, Design System Standards & Adoption
-- **Digital Experience Platforms**: Salesforce Commerce Cloud (SFCC), Shopify, WordPress, Contentstack, Enterprise CMS, Ecommerce Platforms, Content Workflows
+- **Design Systems & Creative Technology**: Design System Architecture, Storybook, Style Dictionary, Design Tokens, Component Libraries, Figma, Adobe Creative Suite, Design Documentation, Adoption Standards
 - **Frontend Development**: HTML, CSS, SASS, JavaScript (ES6+), React, Node.js, npm, REST APIs, Frontend Architecture
-- **Experience Quality & Best Practices**: Accessibility (WCAG), Inclusive Design, Internationalization (i18n), Web Performance, SEO, Experimentation & Optimization
-- **Workflow & Collaboration Tools**: Git, Jira, Confluence, CI/CD, Webpack, ESLint, Prettier, Google Analytics, AI-Assisted Development & Workflow Optimization
+- **Experience Quality & Best Practices**: Accessibility (WCAG), Inclusive Design, Responsive Design, Internationalization (i18n), Web Performance, SEO, Experimentation & Optimization
+- **Workflow & Collaboration Tools**: Git, Jira, Confluence, CI/CD, Webpack, ESLint, Prettier, AI-Assisted Development & Workflow Optimization
+- **Digital Experience Platforms**: Salesforce Commerce Cloud (SFCC), Shopify, WordPress, Contentstack, Enterprise CMS, Ecommerce Platforms, Content Workflows
 
 ---
 
@@ -43,10 +43,11 @@ Digital Experience Strategy | Design Systems & Scalable Patterns | Design System
 Remote / Broomfield, CO (April 2020 - September 2025)
 
 **Senior Manager, Frontend and Design Systems** | April 2024 - September 2025
- - Led digital experience strategy and design system evolution across global ecommerce storefronts, establishing scalable patterns, standards, and workflows across multiple regions and brands.
- - Built and scaled the **Okra design system** in partnership with UX and product teams, establishing reusable patterns, accessibility standards, and workflows that improved consistency and delivery velocity across teams.
- - Established digital experience standards focused on accessibility (WCAG), performance, scalability, and long-term maintainability.
- - Led team development through mentorship, coaching, feedback, and technical direction, fostering stronger engineering practices and cross-functional collaboration.
+ - Led digital experience strategy and design system evolution across global ecommerce storefronts, defining scalable standards, reusable patterns, and operating workflows across multiple regions and brands.
+ - Built and scaled the **Okra design system** in partnership with UX and product teams, aligning shared foundations across design and code through reusable components, accessibility standards, and documented practices.
+ - Established digital experience standards centered on accessibility (WCAG), performance, and long-term maintainability, improving consistency across teams and releases.
+ - Improved team effectiveness through mentorship, coaching, feedback, and technical direction, fostering stronger engineering practices and cross-functional collaboration.
+ - Advanced workflow quality through component documentation and tooling practices (Storybook, linting, CI/CD), helping teams ship faster with greater confidence.
  - Remained hands-on in frontend architecture, design system contributions, and technical decision-making.
 
 **Manager, Digital Development** | March 2023 - April 2024
@@ -56,7 +57,7 @@ Remote / Broomfield, CO (April 2020 - September 2025)
 - Helped scale frontend practices across distributed teams while maintaining code quality and consistency.
 
 **Senior Digital Developer, SFCC** | September 2021 - March 2023
-- Contributed to scalable component libraries and frontend patterns supporting high-traffic global ecommerce experiences.
+- Contributed to reusable component libraries and scalable frontend patterns supporting high-traffic global ecommerce experiences.
 - Improved frontend performance, scalability, and accessibility through component refactors and architectural enhancements.
 - Collaborated with global teams to ensure consistent UI patterns and localized experiences across regions.
 
