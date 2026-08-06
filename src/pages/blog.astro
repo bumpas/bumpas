@@ -5,7 +5,7 @@ import Pagination from "@/layouts/components/Pagination.astro";
 import Post from "@/layouts/partials/Post.astro";
 import { getSinglePage } from "@/lib/contentParser.astro";
 import { sortByDate } from "@/lib/utils/sortFunctions";
-import { markdownify } from "@/lib/utils/textConverter";
+import { markdownify, slugify } from "@/lib/utils/textConverter";
 import { Image } from "astro:assets";
 import type { CollectionEntry } from "astro:content";
 import { getEntry } from "astro:content";
@@ -16,8 +16,14 @@ const homepage = (await getEntry(
 )) as CollectionEntry<"homepage">;
 const { banner, call_to_action } = homepage.data;
 const posts = await getSinglePage("posts");
-const sortPostByDate = sortByDate(posts);
-const totalPages = Math.ceil(posts.length / settings.pagination);
+const filteredPosts = posts.filter(
+  (post) =>
+    !post.data.categories
+      ?.map((category: string) => slugify(category))
+      .includes("portfolio")
+);
+const sortPostByDate = sortByDate(filteredPosts);
+const totalPages = Math.ceil(filteredPosts.length / settings.pagination);
 ---
 
 <Base>

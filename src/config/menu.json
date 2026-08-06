@@ -5,16 +5,20 @@
       "url": "/about"
     },
     {
-      "name": "Contact",
-      "url": "/contact"
+      "name": "Portfolio",
+      "url": "/categories/portfolio"
+    },
+    {
+      "name": "Photography",
+      "url": "/photography"
     },
     {
       "name": "Blog",
       "url": "/blog"
     },
     {
-      "name": "Photography",
-      "url": "/photography"
+      "name": "Contact",
+      "url": "/contact"
     }
   ],
   "footer": [
