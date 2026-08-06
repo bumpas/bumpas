@@ -1,0 +1,159 @@
+---
+title: "Road34 Redesign: AI + Pencil.dev + Sanity"
+description: "A case study on redesigning Road34 with AI-assisted scaffolding, Pencil.dev component exploration, and a Sanity-driven Astro frontend."
+date: 2026-08-06T12:00:00Z
+image: "/images/post/road34/road34-ten.vercel.app_bikes.png"
+categories: ["Portfolio"]
+tags: ["AI", "Pencil.dev", "Sanity", "Astro", "GROQ", "CMS architecture"]
+---
+
+import { Image } from 'astro:assets';
+
+Road34 needed a site redesign that could match the personality of the brand while being easier for content owners to run day-to-day. The target state was simple: ship faster, keep the UI consistent, and let content updates happen without constant engineering lift.
+
+<Notice type="info">
+Current site: https://road34.com/ <br />
+Redesign site: https://road34-ten.vercel.app/
+</Notice>
+
+This build uses a monorepo structure with two apps:
+
+- An Astro frontend app
+- A Sanity Studio app
+
+## Snapshot
+
+- Multi-page marketing build: home, menu, bar, bikes, merch, visit
+- Dynamic bike detail routes generated from `bikeCard` slugs
+- Structured Sanity schemas for pages, sections, and reusable card content
+- Editor-triggered Vercel deploy hook inside Studio
+
+## Project goals
+
+- Capture Road34's ride + bar identity in a cohesive visual system
+- Make high-frequency content (menu, taps, bikes) easier to update
+- Reduce page-by-page hardcoding with reusable section patterns
+- Keep frontend performance and maintainability in a clean Astro architecture
+
+## 1. AI-assisted scaffolding
+
+AI was used for speed in the earliest implementation passes, but the stack was intentionally chosen first so the generated code had guardrails.
+
+Stack used for the redesign:
+
+- Astro 7 frontend (Node 22+) for static-first performance and clean page composition
+- Sanity Studio v5 for structured content editing
+- `@sanity/client` + GROQ for data fetching
+- `@sanity/astro` and `astro-portabletext` for frontend/content integration
+- React 19 in Studio for editor tooling and custom deploy UI
+
+How scaffolding worked:
+
+- Generating base page structures and component shells
+- Drafting initial schema and query shapes for Sanity-backed pages
+- Setting up document types for pages, sections, and reusable cards before deep styling
+- Establishing fetch patterns (latest active docs, reference resolution, fallback content)
+- Rapid iteration on content hierarchy and section composition
+
+The point of this phase was momentum with structure. The first pass did not need to be perfect, it needed to be real enough to evaluate quickly while still matching the long-term architecture.
+
+## 2. Visual system exploration with Pencil.dev in VSCODE
+
+Pencil.dev was used to push beyond scaffold-level UI and define a stronger visual language:
+
+- Reusable card patterns and hierarchy treatments
+- Distinct imagery direction for bikes, bar, and food storytelling
+- Better typography and spacing rhythm for readability and atmosphere
+
+<Image 
+	src="/images/post/road34/pencil-dev.png"
+	alt="Pencil.dev interface showing a Road34 bikes page design exploration"
+	width={3216}
+	height={2080}
+/>
+
+## 3. Sanity content architecture
+
+The Sanity layer was modeled as composable content instead of page-locked blobs. In Studio, content is organized into pages, sections, and reusable component documents.
+
+Core document types include:
+
+- Pages: `homePage`, `menuPage`, `barPage`, `bikesPage`, `merchPage`, `visitPage`
+- Components: `hero`, `bikeCard`, `menuCard`, `serviceCard`, `simpleCard`
+- Sections/orchestration: `cardSection`, `deployControl`
+
+Several decisions improved editor usability:
+
+- "Active + effectiveFrom" behavior for menu and bar content so current versions are selected predictably
+- Reference-based composition (`cardSections[]->`, `cards[]->`) so editors can reorder without code changes
+- Validations (required fields, min counts, positive numbers, alt text requirements) to prevent fragile content
+
+## 4. Astro + GROQ implementation details
+
+On the frontend, Astro pages fetch the latest content with GROQ and normalize it before rendering. A few practical patterns from this build:
+
+- Homepage queries nested references for hero + card sections in one pass
+- Bikes index has a fallback strategy: if featured bikes/services are empty, fetch all matching cards
+- Bike detail routes use static path generation from `bikeCard` slugs
+- Portable Text is rendered for richer bike descriptions
+- Sanity images are transformed through a small URL builder utility for predictable output sizes
+
+This kept runtime logic straightforward while preserving editorial flexibility.
+
+## 5. Publishing workflow
+
+Studio includes a dedicated "Deploy" item that triggers a Vercel Deploy Hook via POST request. That gives content editors a clean path from publish to frontend rebuild without touching CI tooling.
+
+This closed the loop between content operations and deployment.
+
+<Image 
+	src="/images/post/road34/localhost_3333_structure_deploy.png"
+	alt="Sanity Studio deploy control interface"
+	width={2026}
+	height={1020}
+/>
+
+## Outcome
+
+The redesigned Road34 site now has a clearer technical and editorial foundation:
+
+- Brand-forward presentation shaped by fast visual exploration
+- Structured CMS architecture designed for simple long-term maintenance
+- A deployment path that supports non-developer publishing workflows
+- A frontend implementation pattern that scales as content grows
+
+The key lesson from this project was not just "use AI faster." It was combining:
+
+- AI for rapid scaffolding
+- Pencil.dev for quick iteration and prototyping for intentional visual decisions
+- Sanity for sustainable content operations
+
+That stack made the redesign both launch-ready and durable.
+
+<Image 
+	src="/images/post/road34/road34-ten.vercel.app_bikes.png"
+	alt="Cropped hero capture from the live Road34 bikes page"
+	width={2944}
+	height={1550}
+/>
+
+<Image 
+	src="/images/post/road34/road34-ten.vercel.app_bar.png"
+	alt="Cropped hero capture from the live Road34 bar page"
+	width={2944}
+	height={1550}
+/>
+
+<Image 
+	src="/images/post/road34/road34-ten.vercel.app_visit.png"
+	alt="Cropped hero capture from the live Road34 visit page"
+	width={2944}
+	height={1550}
+/>
+
+<Image 
+	src="/images/post/road34/road34-ten.vercel.app_footer.png"
+	alt="Cropped capture from the live Road34 footer"
+	width={2944}
+	height={1550}
+/>
