@@ -5,6 +5,7 @@ import Pagination from "@/layouts/components/Pagination.astro";
 import Post from "@/layouts/partials/Post.astro";
 import { getSinglePage } from "@/lib/contentParser.astro";
 import { getTaxonomy } from "@/lib/taxonomyParser.astro";
+import { sortByDate } from "@/lib/utils/sortFunctions";
 import taxonomyFilter from "@/lib/utils/taxonomyFilter";
 import { humanize } from "@/lib/utils/textConverter";
 import { Image } from "astro:assets";
@@ -29,7 +30,8 @@ const homepage = (await getEntry(
 )) as CollectionEntry<"homepage">;
 const { banner } = homepage.data;
 const posts = await getSinglePage("posts");
-const filterByTags = taxonomyFilter(posts, "categories", category);
+const sortByDatePosts = sortByDate(posts);
+const filterByTags = taxonomyFilter(sortByDatePosts, "categories", category);
 const totalPages = Math.ceil(filterByTags.length / pagination);
 ---
 
