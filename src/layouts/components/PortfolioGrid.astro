@@ -16,9 +16,9 @@ const { summary_length } = config.settings;
   {posts.map((post) => (
     <article class="group rounded-lg overflow-hidden border border-border bg-white shadow-sm hover:shadow-md transition dark:bg-transparent">
       {post.data.image && (
-        <a href={`/posts/${post.id}`} class="block">
+        <a href={`/posts/${post.id}`} class="block h-[180px] overflow-hidden">
           <Image
-            class="w-full h-auto"
+            class="h-full w-full object-cover object-top"
             src={post.data.image}
             alt={post.data.title}
             width={480}
