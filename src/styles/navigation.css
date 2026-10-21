@@ -24,7 +24,7 @@
 }
 
 .navbar-nav {
-  @apply text-center md:text-left;
+  @apply text-center md:text-left bg-body md:bg-transparent;
 }
 
 .nav-item {

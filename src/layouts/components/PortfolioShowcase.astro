@@ -49,10 +49,10 @@ const { projects = collectionProjects, homepage = false } = Astro.props;
 const displayProjects = homepage ? projects.slice(0, 5) : projects;
 ---
 
-<section class="portfolio-showcase py-16 md:py-24">
+<section class="portfolio-showcase mb-20">
   <div class="container">
     <div class="mb-12">
-      <h2 class="h3 md:h2 mb-4">Featured Work</h2>
+      {homepage ? <h2 class="h3 mb-4">Featured Work</h2> : <h1 class="h1 mb-4">Portfolio</h1>}
       <p class="text-lg text-gray-600 max-w-2xl">
         Strategic projects that moved the needle on design systems, accessibility, and
         developer experience.
