@@ -1,0 +1,85 @@
+---
+title: "Road34 Redesign: AI + pen.dev + Sanity"
+description: "Rebuilt Road34's marketing site using AI scaffolding, pen.dev for design exploration, and Sanity CMS for content management."
+date: 2026-08-06T12:00:00Z
+author: "Andrew Bumpas"
+tags: ["Sanity", "Astro", "AI", "pen.dev", "CMS", "Full-stack"]
+image: "/images/post/road34/road34-ten.vercel.app_bikes.png"
+featured: false
+skills: ["Astro", "Sanity", "GROQ", "React", "TypeScript", "pen.dev"]
+impact:
+  - label: "Pages"
+    value: "6"
+  - label: "Dynamic Routes"
+    value: "Bikes, Menu"
+  - label: "Content Types"
+    value: "8+"
+  - label: "Deploy Automation"
+    value: "Vercel Hooks"
+---
+
+## The Challenge
+
+Road34 needed a marketing site redesign that captured their ride + bar identity while giving the content team (non-developers) the ability to update frequently-changing content like menus, bike inventory, and taps without engineering involvement.
+
+The constraint: build it fast while keeping the architecture clean for long-term maintenance.
+
+## The Solution
+
+Built a monorepo structure with AI-assisted scaffolding, design exploration in pen.dev, and a Sanity-powered content management layer.
+
+**Architecture:**
+- **Frontend**: Astro 7 for static-first performance and clean page composition
+- **CMS**: Sanity Studio v5 for structured content editing with custom deploy UI
+- **Data**: GROQ queries with `@sanity/client` for efficient content fetching
+- **Design**: pen.dev for visual system exploration and component polish
+- **Deployment**: Vercel with automatic deploys triggered from Sanity Studio
+
+**Tech Stack:**
+- Astro 7 + Node 22+ for frontend
+- Sanity Studio v5 + React 19 for editor tooling
+- `@sanity/astro` and `astro-portabletext` for seamless integration
+- TypeScript throughout for type safety
+- Vercel deploy hooks for automatic publishing
+
+## Key Implementation Details
+
+**Phase 1: AI-Assisted Scaffolding**
+- Generated base page structures and component shells with guardrails from chosen stack
+- Drafted Sanity schemas and GROQ query shapes
+- Set up document types for pages, sections, and reusable cards
+- Established fetch patterns with fallback strategies
+
+**Phase 2: Sanity Content Architecture**
+- Designed composable content model (pages, sections, cards) instead of rigid page templates
+- Created core document types: `homePage`, `menuPage`, `barPage`, `bikesPage`, `merchPage`, `visitPage`
+- Implemented "Active + effectiveFrom" behavior for time-sensitive content (menu, taps)
+- Added validations (required fields, alt text) to prevent content fragility
+
+**Phase 3: pen.dev Visual Exploration**
+- Defined reusable card patterns and visual hierarchy
+- Established imagery direction (bikes vs. bar vs. food storytelling)
+- Refined typography, spacing, and visual rhythm
+
+**Phase 4: Astro + GROQ Integration**
+- Built dynamic bike detail routes from `bikeCard` slugs
+- Implemented fallback strategies (featured bikes → all bikes if empty)
+- Used Portable Text for rich bike descriptions
+- Created URL builder utility for predictable image transformations
+
+## Results
+
+- **Live redesign** deployed to production with improved UX
+- **6 dynamic pages** built with reusable section patterns
+- **8+ content types** enabling flexible, editor-driven content composition
+- **Content team autonomy** — menu, taps, and bike updates don't require engineering
+- **Type-safe content** — Sanity validations prevent broken layouts
+- **Deploy automation** — One-click publishing from Studio triggers Vercel builds
+
+## Impact
+
+The Sanity-driven approach proved especially valuable because it shifted content management from code-based (hardcoded menus) to schema-based (editors manage structured data). The reference-based composition meant content could be reordered and updated without touching code.
+
+This project validated an AI-assisted scaffolding workflow: use AI for structure and setup, but rely on thoughtful schema design and validation to ensure the content layer stays reliable over time.
+
+**Live project**: https://road34.vercel.app/

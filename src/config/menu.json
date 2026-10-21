@@ -1,12 +1,12 @@
 {
   "main": [
     {
-      "name": "About",
-      "url": "/about"
+      "name": "Portfolio",
+      "url": "/portfolio"
     },
     {
-      "name": "Portfolio",
-      "url": "/categories/portfolio"
+      "name": "About",
+      "url": "/about"
     },
     {
       "name": "Photography",

@@ -1,7 +1,7 @@
 ---
 banner:
   title: "About"
-  image: "/images/profile-pic.jpg"
+  image: "/images/og-image.png"
   body: "I’m a Digital experience leader passionate about building accessible, scalable, and beautifully designed digital experiences. I love the challenge of bridging design and development to create thoughtful, user-focused solutions.
   
   When I’m away from the screen, you’ll find me learning to play hockey, fly fishing, mountain biking, or behind a camera capturing the outdoors. I’m happiest exploring with my family — finding balance between creativity, code, and a bit of adventure."

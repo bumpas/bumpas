@@ -98,7 +98,7 @@
 
 /* banner */
 .banner {
-  @apply relative bg-cover bg-center bg-no-repeat py-[100px] lg:pt-[230px] lg:pb-28;
+  @apply relative bg-cover bg-center bg-no-repeat py-[100px] lg:pt-[200px] lg:pb-28;
 }
 
 .banner-illustration {

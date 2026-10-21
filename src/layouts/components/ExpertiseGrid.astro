@@ -1,0 +1,94 @@
+---
+// ExpertiseGrid.astro - Display expertise domains as interactive cards
+interface Props {
+  items?: Array<{
+    id: string;
+    title: string;
+    description: string;
+    icon?: string;
+    skills?: string[];
+  }>;
+}
+
+const defaultExpertise = [
+  {
+    id: "design-systems",
+    title: "Design Systems",
+    description: "Architecture, governance, component libraries, and design tokens",
+    skills: ["Design System Architecture", "Component Libraries", "Design Tokens", "Storybook"],
+  },
+  {
+    id: "frontend-architecture",
+    title: "Frontend Architecture",
+    description: "Scalable component patterns, performance optimization, and maintainability",
+    skills: ["React", "Component Architecture", "Web Performance", "CSS-in-JS"],
+  },
+  {
+    id: "accessibility",
+    title: "Accessibility & Inclusion",
+    description: "WCAG compliance, inclusive design, and universal usability",
+    skills: ["WCAG 2.1", "Inclusive Design", "A11y Testing", "Semantic HTML"],
+  },
+  {
+    id: "ecommerce-experience",
+    title: "Ecommerce Experience",
+    description: "Enterprise platforms, conversion optimization, and digital commerce",
+    skills: ["SFCC", "Shopify", "Conversion Optimization", "Enterprise CMS"],
+  },
+  {
+    id: "cross-functional-leadership",
+    title: "Cross-Functional Leadership",
+    description: "Team mentorship, collaboration, and strategic direction",
+    skills: ["Team Leadership", "Mentorship", "Strategic Planning", "Stakeholder Management"],
+  },
+  {
+    id: "developer-experience",
+    title: "Developer Experience",
+    description: "Tooling, documentation, CI/CD, and workflow automation",
+    skills: ["CI/CD Pipelines", "Documentation", "Developer Tools", "Automation"],
+  },
+];
+
+const { items = defaultExpertise } = Astro.props;
+---
+
+<section class="expertise-grid py-16 md:py-24">
+  <div class="container">
+    <div class="mb-12">
+      <h2 class="h3 md:h2 mb-4">Expertise & Focus Areas</h2>
+      <p class="text-lg text-gray-600 max-w-2xl">
+        15+ years bridging design and engineering to deliver scalable, accessible experiences.
+      </p>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+      {
+        items.map((item) => (
+          <div class="expertise-card bg-white rounded-lg border border-gray-200 p-6 hover:shadow-lg transition-shadow">
+            <h3 class="h5 mb-2">{item.title}</h3>
+            <p class="text-sm text-gray-600 mb-4">{item.description}</p>
+            {item.skills && (
+              <div class="flex flex-wrap gap-2">
+                {item.skills.map((skill) => (
+                  <span class="inline-block font-secondary bg-gray-100 text-gray-700 text-xs px-2 py-1 rounded">
+                    {skill}
+                  </span>
+                ))}
+              </div>
+            )}
+          </div>
+        ))
+      }
+    </div>
+  </div>
+</section>
+
+<style>
+  .expertise-card {
+    transition: all 0.3s ease;
+  }
+
+  .expertise-card:hover {
+    transform: translateY(-2px);
+  }
+</style>

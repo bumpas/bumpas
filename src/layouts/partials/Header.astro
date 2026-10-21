@@ -54,7 +54,7 @@ const currentPath = Astro.url.pathname;
 
     <ul
       id="nav-menu"
-      class="navbar-nav order-3 hidden w-full items-center md:order-1 md:flex md:w-auto md:space-x-2"
+      class="navbar-nav order-3 hidden w-full items-center md:order-1 md:flex md:w-auto md:space-x-4"
     >
       {
         main.map((menu) => (
@@ -110,6 +110,15 @@ const currentPath = Astro.url.pathname;
   </nav>
 </header>
 
+<style>
+  /* Header visible state when scrolled */
+  .header.is-visible {
+    transition: all 0.3s ease-in-out;
+    opacity: 1;
+    visibility: visible;
+  }
+</style>
+
 <script>
   document.addEventListener("astro:page-load", () => {
     const header = document.querySelector(".header") as HTMLElement;
@@ -118,8 +127,13 @@ const currentPath = Astro.url.pathname;
     window.addEventListener('scroll', () => {
         if (window.scrollY > lastScrollY && window.scrollY > 100) { // Scrolling down and past a threshold
             header.classList.add('-translate-y-full'); // Hide header
-        } else if (window.scrollY < lastScrollY) { // Scrolling up
+            header.classList.remove('is-visible'); // Remove visible state
+        } else if (window.scrollY < lastScrollY && window.scrollY > 100) { // Scrolling up and page is scrolled
             header.classList.remove('-translate-y-full'); // Show header
+            header.classList.add('is-visible'); // Add visible state
+        } else if (window.scrollY <= 100) { // At top of page
+            header.classList.remove('-translate-y-full'); // Show header
+            header.classList.remove('is-visible'); // Remove visible state
         }
         lastScrollY = window.scrollY;
     });

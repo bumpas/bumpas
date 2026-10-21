@@ -1,0 +1,196 @@
+---
+title: "Component Accessibility: Building WCAG-Compliant Components"
+description: "Systematically designed and audited components for WCAG 2.1 AA compliance with keyboard navigation, ARIA attributes, and automated testing."
+date: 2025-07-20T05:00:00Z
+author: "Andrew Bumpas"
+tags: ["Accessibility", "WCAG", "Components", "ARIA", "Keyboard Navigation", "Testing"]
+featured: false
+skills: ["WCAG 2.1", "ARIA Attributes", "Keyboard Navigation", "Screen Reader Testing", "Axe", "Storybook A11y"]
+impact:
+  - label: "Components Audited"
+    value: "15+"
+  - label: "WCAG Compliance"
+    value: "2.1 AA"
+  - label: "Focus States"
+    value: "100%"
+  - label: "Keyboard Nav"
+    value: "Fully Tested"
+---
+
+## The Challenge
+
+Building a component library used across high-traffic ecommerce storefronts created an accessibility imperative:
+- Components were being reused across dozens of product pages reaching millions of users
+- Accessible components could not be retrofitted—they had to be designed in from the start
+- Teams needed clear patterns and examples for implementing accessible features
+- Automated testing had to be built into the development workflow to prevent regressions
+
+## The Solution
+
+Implemented a comprehensive accessibility program spanning design, implementation, testing, and documentation.
+
+**Design Principles:**
+- Semantic HTML as foundation—`<button>` for buttons, `<a>` for links, `<form>` for forms
+- ARIA attributes only when semantic HTML is insufficient
+- Keyboard navigation support for all interactive components
+- Color not as the only indicator of state
+- Sufficient color contrast (4.5:1 for body text, 3:1 for large text)
+
+**Component Implementation Examples:**
+
+**Button Component:**
+```jsx
+// forwardRef for ref access, aria-disabled for semantic disabled state
+const Button = forwardRef(
+  ({ disabled, ariaDisabled, href, variant, ...props }, ref) => {
+    const Component = href ? 'a' : 'button';
+    const isDisabled = disabled || ariaDisabled;
+    
+    return (
+      <Component
+        ref={ref}
+        disabled={disabled}
+        aria-disabled={ariaDisabled}
+        aria-label={props['aria-label']}
+        className={clsx(
+          'ok-button',
+          `ok-button--${variant}`,
+          isDisabled && 'ok-button--disabled'
+        )}
+        {...props}
+      >
+        {props.children}
+      </Component>
+    );
+  }
+);
+```
+
+**Keyboard Navigation:**
+- `Tab` / `Shift+Tab` — Navigate between interactive elements
+- `Enter` / `Space` — Activate buttons
+- `Arrow keys` — Navigate within tabs, select lists
+- `Escape` — Close modals and dropdowns
+- Focus order follows document order (no tabindex hacks)
+
+**ARIA Attributes:**
+- `aria-label` — Descriptive label for icon-only buttons
+- `aria-labelledby` — Associate element with visible heading
+- `aria-describedby` — Provide additional description
+- `aria-disabled` — Indicate disabled state when native disabled unavailable
+- `role` — Define component semantics (tab, tablist, tabpanel, etc.)
+
+**Storybook A11y Integration:**
+Configured `@storybook/addon-a11y` to run accessibility checks on every component:
+```javascript
+// .storybook/preview.js
+import { a11yConfig } from './a11y-config';
+
+export const parameters = {
+  a11y: a11yConfig
+};
+```
+
+**Accessibility Stories:**
+Each component includes dedicated accessibility stories demonstrating:
+```javascript
+export const AccessibleKeyboardNav = {
+  render: () => <Tabs>
+    <Tab>Tab 1</Tab>
+    <Tab>Tab 2</Tab>
+  </Tabs>,
+  parameters: {
+    docs: {
+      description: {
+        story: 'Use arrow keys to navigate between tabs. Enter/Space to activate.'
+      }
+    }
+  }
+};
+```
+
+**Automated Testing Plan:**
+```javascript
+// Playwright script to scan all Storybook stories with axe
+import { injectAxe, checkA11y } from 'axe-playwright';
+
+for (const story of stories) {
+  await page.goto(`${storybook}?id=${story.id}`);
+  await injectAxe(page);
+  const violations = await checkA11y(page);
+  report(story, violations);
+}
+```
+
+**Testing Coverage:**
+- Color contrast validation across all components
+- Keyboard navigation for interactive components (tabs, modals, dropdowns)
+- Screen reader testing with NVDA and JAWS
+- Focus management on modal open/close
+- Form labels and error messaging
+- Image alt text (where applicable in components)
+
+## Implementation Patterns
+
+**Icon Button Pattern:**
+```jsx
+<Button 
+  iconOnly 
+  aria-label="Close dialog"
+  icon={<IconClose />}
+/>
+```
+
+**Form Input Pattern:**
+```jsx
+<label htmlFor="email">Email Address</label>
+<input
+  id="email"
+  type="email"
+  aria-describedby="email-hint"
+/>
+<small id="email-hint">We'll never share your email</small>
+```
+
+**Tab Navigation Pattern:**
+```jsx
+<Tabs role="tablist">
+  <Tab role="tab" aria-selected={activeTab === 0}>
+    Tab 1
+  </Tab>
+  <TabPanel role="tabpanel" aria-labelledby="tab-1">
+    Content 1
+  </TabPanel>
+</Tabs>
+```
+
+## Results
+
+- **15+ components** brought to WCAG 2.1 AA compliance
+- **Zero keyboard navigation issues** in production components
+- **100% focus management** — focus visible and managed on open/close
+- **Automated testing** — all components tested on every commit
+- **Team confidence** — clear patterns and examples for new components
+- **Legal/brand safety** — demonstrated commitment to inclusive design
+
+## Documentation
+
+Each component includes:
+- Accessibility checklist in Storybook
+- Code examples showing accessible patterns
+- References to WCAG criteria met
+- Screen reader testing notes
+- Keyboard navigation guide
+
+## Impact
+
+This systematic approach to accessibility proved that building accessible components from the start is easier (and cheaper) than retrofitting later. It also demonstrated a commitment to inclusive design that resonated with stakeholders and legal teams.
+
+More importantly, accessible components benefit everyone:
+- Voice control users benefit from proper semantic HTML
+- Mobile users benefit from larger touch targets
+- Low-vision users benefit from sufficient contrast
+- Keyboard-only users benefit from navigation patterns that work
+- International users benefit from proper language markup
+
+**Lesson**: Accessibility isn't a checklist—it's a design principle that makes products better for everyone.

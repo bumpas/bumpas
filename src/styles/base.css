@@ -3,7 +3,31 @@ html {
 }
 
 body {
-  @apply bg-body font-secondary font-normal leading-relaxed text-text;
+  @apply bg-body font-primary font-normal leading-relaxed text-text;
+}
+
+main::before {
+  content: '';
+  background-size: 30px 30px;
+  background-image: radial-gradient(circle at 1px 1px, #7b8188 1px, transparent 0);
+  z-index: -2;
+  position: fixed;
+  width: 100vw;
+  height: 100vh;  
+}
+
+main::after {
+  content: '';
+  background-image: radial-gradient(ellipse 45% 65% at 82% 42%, #EEF2F700 0%, #EEF2F7B3 45%, #F3F5F8 80%);
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+  box-sizing: border-box;
+  position: fixed;
+  width: 100vw;
+  height: 100vh;
+  z-index: -1;
+  bottom: 0;
+  right: 0;
 }
 
 h1,
@@ -12,12 +36,13 @@ h3,
 h4,
 h5,
 h6 {
-  @apply font-primary leading-tight text-text-dark;
+  @apply font-primary font-bold leading-tight text-text-dark;
 }
 
 h1,
 .h1 {
   @apply text-h1-sm md:text-h1;
+  letter-spacing: -2px; 
 }
 
 h2,
@@ -55,4 +80,12 @@ code {
 
 button {
   @apply cursor-pointer;
+}
+
+.icon-status::before {
+  content: '•';
+  color: #C8643B;
+  font-size: 2.2em; 
+  line-height: 0;
+  vertical-align: middle;
 }

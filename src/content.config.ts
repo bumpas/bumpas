@@ -112,6 +112,27 @@ const photoCollection = defineCollection({
     }),
 });
 
+// Projects collection schema
+const projectsCollection = defineCollection({
+  loader: glob({ pattern: "**/*.{md,mdx}", base: "src/content/projects" }),
+  schema: z.object({
+    title: z.string(),
+    description: z.string(),
+    date: z.date(),
+    author: z.string().optional(),
+    image: z.string().optional(),
+    tags: z.array(z.string()).default([]),
+    featured: z.boolean().default(false),
+    skills: z.array(z.string()).default([]),
+    impact: z.array(
+      z.object({
+        label: z.string(),
+        value: z.string(),
+      }),
+    ).default([]),
+  }),
+});
+
 // Export collections
 export const collections = {
   homepage: homepageCollection,
@@ -121,4 +142,5 @@ export const collections = {
   authors: authorsCollection,
   contact: contactCollection,
   photography: photoCollection,
+  projects: projectsCollection,
 };

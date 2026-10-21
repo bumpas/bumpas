@@ -7,9 +7,9 @@ content: ""
 
 You can easily schedule a short meeting through my Google Calendar widget
 
-#### Here are a few things I love talking about:
+**Here are a few things we can chat about:**
 
-- Front-end architecture and performance
+- Front-end architecture
 - Modern web frameworks and design systems
 - CMS integrations (like Contentstack, Sanity, or headless WordPress)
 - Freelance or contract opportunities
