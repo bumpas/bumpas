@@ -1,6 +1,6 @@
 /* section style */
-.section {
-  @apply py-20;
+section + section {
+  @apply pt-20;
 }
 
 /* container */
@@ -98,7 +98,7 @@
 
 /* banner */
 .banner {
-  @apply relative bg-cover bg-center bg-no-repeat py-[100px] lg:pt-[200px] lg:pb-28;
+  @apply relative bg-cover bg-center bg-no-repeat lg:pb-28;
 }
 
 .banner-illustration {
