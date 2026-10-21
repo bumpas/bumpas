@@ -1,0 +1,71 @@
+---
+import { getCollection, render } from "astro:content";
+import Base from "@/layouts/Base.astro";
+
+export async function getStaticPaths() {
+  const projects = await getCollection("projects");
+  return projects.map((entry) => ({
+    params: { slug: entry.id },
+    props: { entry },
+  }));
+}
+
+const { entry } = Astro.props;
+
+if (!entry) {
+  return new Response("Not found", { status: 404 });
+}
+
+const { Content } = await render(entry);
+const { title, description, image, skills, impact } = entry.data;
+---
+
+<Base title={title} description={description}>
+  <article class="py-16 md:py-24">
+    <div class="container max-w-3xl">
+      {image && (
+        <img
+          src={image}
+          alt={title}
+          class="w-full rounded-lg mb-8 object-cover"
+        />
+      )}
+
+      <header class="mb-12">
+        <h1 class="h1 mb-4">{title}</h1>
+        <p class="text-xl text-gray-600 mb-8">{description}</p>
+
+        {impact.length > 0 && (
+          <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mb-8">
+            {impact.map((metric) => (
+              <div class="bg-gray-50 p-4 rounded-lg">
+                <div class="font-secondary text-sm text-gray-500 mb-1">{metric.label}</div>
+                <div class="h4 font-secondary">{metric.value}</div>
+              </div>
+            ))}
+          </div>
+        )}
+
+        {skills.length > 0 && (
+          <div class="flex flex-wrap gap-2">
+            {skills.map((skill) => (
+              <span class="inline-block bg-blue-100 text-blue-800 font-secondary text-sm px-3 py-1 rounded">
+                {skill}
+              </span>
+            ))}
+          </div>
+        )}
+      </header>
+
+      <div class="prose prose-lg max-w-none">
+        <Content />
+      </div>
+
+      <nav class="mt-16 pt-8 border-t border-gray-200">
+        <a href="/portfolio" class="text-blue-600 hover:text-blue-800">
+          ← Back to portfolio
+        </a>
+      </nav>
+    </div>
+  </article>
+</Base>

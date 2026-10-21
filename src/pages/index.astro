@@ -1,89 +1,31 @@
 ---
-import { settings } from "@/config/config.json";
 import Base from "@/layouts/Base.astro";
-import Cta from "@/layouts/components/Cta.astro";
-import Pagination from "@/layouts/components/Pagination.astro";
-import PortfolioGrid from "@/layouts/components/PortfolioGrid.astro";
-import { getSinglePage } from "@/lib/contentParser.astro";
-import { sortByDate } from "@/lib/utils/sortFunctions";
-import taxonomyFilter from "@/lib/utils/taxonomyFilter";
-import { markdownify } from "@/lib/utils/textConverter";
-import { Image } from "astro:assets";
-import type { CollectionEntry } from "astro:content";
-import { getEntry } from "astro:content";
-
-const homepage = (await getEntry(
-  "homepage",
-  "-index"
-)) as CollectionEntry<"homepage">;
-const { banner, call_to_action } = homepage.data;
-const posts = await getSinglePage("posts");
-const sortPostByDate = sortByDate(posts);
-const totalPages = Math.ceil(posts.length / settings.pagination);
-const portfolioPosts = sortByDate(
-  taxonomyFilter(posts, "categories", "portfolio")
-).slice(0, 3);
+import PortfolioShowcase from "@/layouts/components/PortfolioShowcase.astro";
+import ExpertiseGrid from "@/layouts/components/ExpertiseGrid.astro";
 ---
 
 <Base>
-  <!-- Banner -->
-  <section
-    class="banner bg-stone-100"
-  >
+  <section class="banner">
     <div class="container">
       <div class="row items-center">
-        <div class="md:col-6 mb-20 md:mb-0">
-          {
-            banner?.title && (
-              <h1 set:html={markdownify(banner?.title)} class="lg:text-6xl uppercase my-8" />
-							<a href="/about" class="btn btn-outline-primary">Learn more</a>
-              <a href="/about#resume" data-astro-reload class="btn btn-primary ml-4">Resume</a>
-            )
-          }
-        </div>
-				<div class="md:col-6">
-					{
-						banner?.image && (
-							<Image
-								class="rounded-lg"
-								src={banner?.image}
-								width={768}
-								height={385}
-								alt=""
-							/>
-						)
-					}
-				</div>
-      </div>
-    </div>
-  </section>
-  <!-- /End Banner -->
-
-  <!-- <Cta cta={call_to_action} /> -->
-  
-  <!-- Portfolio Posts -->
-  <section class="section">
-    <div class="container">
-      <div class="row">
-        <div class="mx-auto lg:col-10">
-          <div class="flex items-center justify-between mb-6">
-            <h2 class="mb-0">Portfolio</h2>
-            <a href="/categories/portfolio" class="text-primary hover:underline">View all</a>
-          </div>
-          {portfolioPosts.length === 0 ? (
-            <p class="text-text">No portfolio posts yet.</p>
-          ) : (
-            <PortfolioGrid posts={portfolioPosts} />
-          )}
+        <div class="md:col-8 mb-20 md:mb-0">
+          <p class="font-secondary text-sm uppercase tracking-wide icon-status">Portfolio &mdash; Andrew Bumpas</p>
+          <h1 class="lg:text-6xl uppercase my-8 leading-[.95em]">Ever Curious.<br/> <span class="text-secondary">Front-end Architect.</span> <br/>Design Systems.<br/> Eats Ambiguity For Breakfast. <span class="text-secondary">Gritty.</span></h1>
+          <p class="pb-10">I bridge design and development — building the tokens, components, and shared language that let product teams ship consistent, accessible interfaces at scale.</p>
+          <a href="/about" class="btn btn-outline-primary">Learn more</a>
+          <a href="/about#resume" data-astro-reload class="btn btn-primary ml-4">Resume</a>
         </div>
       </div>
     </div>
   </section>
+ 
+  <ExpertiseGrid />
+  <PortfolioShowcase homepage={true} />
 
   <section class="bg-stone-700 text-light py-20">
 		<div class="container">
-			<h2 class="text-light">Things I like.</h2>
-		  <ul>
+			<h2 class="text-light mb-2">Things I like.</h2>
+		  <ul class="font-secondary text-sm tracking-wider">
         <li>fly-fishing</li>
         <li>playing mtn bikes</li>
         <li>hockey</li>

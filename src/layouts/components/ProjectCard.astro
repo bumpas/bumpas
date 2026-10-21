@@ -1,0 +1,70 @@
+---
+import { Image } from 'astro:assets';
+
+// ProjectCard.astro - Individual project showcase card
+interface Props {
+  title: string;
+  description: string;
+  image?: string;
+  skills?: string[];
+  impact?: Array<{ label: string; value: string }>;
+  link?: string;
+  featured?: boolean;
+}
+
+const {
+  title,
+  description,
+  image,
+  skills = [],
+  impact = [],
+  link = "#",
+  featured = false,
+} = Astro.props;
+
+const cardClasses = featured
+  ? "md:col-span-2 row-span-1"
+  : "col-span-1 row-span-1";
+---
+
+<a
+  href={link}
+  class={`block p-6 rounded-lg border border-gray-200 bg-white hover:shadow-lg transition-shadow cursor-pointer ${cardClasses} group`}
+>
+  {image && (
+    <div class="project-image relative overflow-hidden rounded-lg mb-4 h-48 w-full bg-gray-200">
+      <Image
+        src={image}
+        alt={title}
+        width={400}
+        height={300}  
+        class="w-full h-full object-cover group-hover:scale-105 transition-transform"
+      />
+    </div>
+  )}
+  <div class="project-content">
+    <h3 class="h4 mb-2 group-hover:text-secondary transition-colors">{title}</h3>
+    <p class="text-sm text-gray-600 mb-4">{description}</p>
+
+    {impact.length > 0 && (
+      <div class="impact-metrics mb-4 space-y-2">
+        {impact.map((metric) => (
+          <div class="flex justify-between font-secondary text-xs">
+            <span class="text-gray-500">{metric.label}</span>
+            <span class="font-semibold text-gray-800">{metric.value}</span>
+          </div>
+        ))}
+      </div>
+    )}
+
+    {skills.length > 0 && (
+      <div class="flex flex-wrap gap-2">
+        {skills.map((skill) => (
+          <span class="inline-block font-secondary bg-blue-100 text-blue-800 text-xs px-2 py-1 rounded">
+            {skill}
+          </span>
+        ))}
+      </div>
+    )}
+  </div>
+</a>

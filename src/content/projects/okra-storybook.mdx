@@ -1,0 +1,198 @@
+---
+title: "Storybook-Driven Documentation & Design System Publishing"
+description: "Architected a comprehensive Storybook documentation system linking code, design tokens, and Figma specs as single source of truth for 40+ components."
+date: 2025-06-10T05:00:00Z
+author: "Andrew Bumpas"
+tags: ["Storybook", "Documentation", "Design System", "MDX", "Publishing", "Figma"]
+featured: false
+skills: ["Storybook 7", "MDX", "Documentation", "Static Site Generation", "Figma Integration", "Developer Experience"]
+impact:
+  - label: "Components Documented"
+    value: "40+"
+  - label: "Story Pages"
+    value: "100+"
+  - label: "Documentation Types"
+    value: "4"
+  - label: "Designer/Dev Alignment"
+    value: "Figma Links"
+---
+
+## The Challenge
+
+A mature design system needs documentation that serves multiple audiences simultaneously:
+- **Designers** need to understand component design rationale and visual specs
+- **Developers** need API documentation, code examples, and accessibility notes
+- **Product Managers** need to understand component capabilities and constraints
+- **New team members** need onboarding guides and best practices
+
+Managing separate documentation (Figma specs, README files, Confluence docs) created misalignment and made maintenance difficult.
+
+## The Solution
+
+Built a unified documentation system using Storybook with MDX, embedding design assets, code examples, and live interactive stories.
+
+**Documentation Architecture:**
+
+**1. Component Stories:**
+Each component has multiple story files demonstrating usage:
+```javascript
+// Button.stories.jsx
+export const Primary = {
+  args: {
+    variant: 'primary',
+    children: 'Click Me'
+  }
+};
+
+export const Disabled = {
+  args: {
+    ...Primary.args,
+    disabled: true
+  }
+};
+
+export const WithIcon = {
+  render: () => (
+    <Button>
+      <IconAdd /> Add Item
+    </Button>
+  )
+};
+```
+
+**2. MDX Design Documentation:**
+Paired with each component, MDX files provide narrative documentation:
+```mdx
+# Button Component
+
+The Button component is the primary action element across all storefronts.
+
+## Design Rationale
+
+Buttons should be used for actions that advance the user flow or trigger immediate effects. For navigation, use the Link component.
+
+## Figma Specs
+
+[View in Figma](https://figma.com/file/...)
+
+## Usage
+
+- Primary buttons for main CTAs (Add to Cart, Checkout)
+- Secondary buttons for alternatives (Continue Shopping, Save for Later)
+- Disabled state for loading or unavailable actions
+
+## Variants
+
+[Interactive preview of all variants...]
+```
+
+**3. Story Categories:**
+
+Each component has stories organized by concern:
+- **Basic Usage** — Default and primary use case
+- **Variants** — All visual variations (primary, secondary, outlined, etc.)
+- **Sizes** — Available size options
+- **States** — Disabled, loading, active, hover
+- **Accessibility** — Keyboard navigation and screen reader testing
+- **Edge Cases** — Long text, icons, multiple elements
+- **Integration** — How it works within other components
+
+**4. Storybook Addons:**
+
+Configured addons provide enhanced documentation:
+- **@storybook/addon-a11y** — Run axe scans on every story
+- **@storybook/addon-designs** — Embed Figma frames directly
+- **@storybook/addon-docs** — Auto-generated API documentation
+- **@storybook/addon-interactions** — Show component behavior
+- **@storybook/addon-themes** — Switch between brand themes
+
+**Example Configuration:**
+```javascript
+// Button.stories.jsx with Figma embed
+export default {
+  title: 'Components/Button',
+  component: Button,
+  parameters: {
+    design: {
+      type: 'figma',
+      url: 'https://www.figma.com/file/...'
+    }
+  }
+};
+```
+
+## Documentation Layers
+
+**Layer 1: Living Code (Stories)**
+Interactive examples showing real component behavior. Anyone can click through, interact with props, and see live results.
+
+**Layer 2: Narrative Design (MDX)**
+Context around why the component exists, design rationale, and when to use it vs. alternatives.
+
+**Layer 3: API Reference (Auto-generated)**
+Storybook auto-generates prop tables from TypeScript/PropTypes, showing all available options and their types.
+
+**Layer 4: Design Specs (Figma)**
+Embedded Figma frames showing visual specs, spacing, typography, and interaction patterns.
+
+## Publishing Workflow
+
+**Building:**
+```bash
+npm run build-storybook
+# Outputs static build to storybook-static/okra/
+```
+
+**Deployment:**
+Static Storybook build is published to CDN (Bitbucket Pages):
+- Design teams link to Storybook in design critiques
+- Developers reference Storybook during implementation
+- QA validates components against Storybook specs
+- External teams document their component usage in Storybook
+
+**URL Structure:**
+```
+https://crocs-dev.bitbucket.io/okra/     # Main docs
+  /?path=/docs/...                        # Design documentation
+  /?id=components-button--primary         # Story variants
+  /?path=/docs/components-button--docs    # API reference
+```
+
+## Team-Specific Guidance
+
+**For Designers:**
+- Link components to Figma prototypes
+- Reference Storybook in design system specs
+- Use Storybook to validate design handoff
+
+**For Developers:**
+- Copy code examples directly from stories
+- Reference API tables for prop options
+- Check accessibility notes before implementation
+
+**For Product Teams:**
+- Understand component capabilities
+- Learn about component constraints
+- Reference in requirement documentation
+
+## Results
+
+- **40+ components** fully documented with stories and MDX
+- **100+ story examples** covering all variants and edge cases
+- **Single source of truth** — Figma, code, and documentation aligned
+- **Faster onboarding** — New developers can learn components from Storybook
+- **Better design-dev collaboration** — Both teams reference same documentation
+- **Static build** — Can be published without backend infrastructure
+- **Accessible documentation** — Keyboard navigation and screen reader friendly
+
+## Impact
+
+Storybook transformed from a visual reference into a critical business tool:
+- **Reduces friction** in design handoff (developers can inspect live components)
+- **Scales team** — new members get productive quickly
+- **Enforces consistency** — documentation is living proof of consistency
+- **Enables remote work** — Everyone has shared access to definitive docs
+
+One metric of success: when new feature requests come in, teams reference Storybook to check "does this component already exist?" Centralized documentation means less wheel-reinvention.
+
+**Lesson**: Invest in documentation tooling early. Great code without great documentation gets reimplemented. Great documentation multiplies team productivity.

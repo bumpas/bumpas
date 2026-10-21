@@ -1,0 +1,156 @@
+---
+title: "Design Token Architecture & Multi-Brand Support"
+description: "Built a scalable token system supporting two brands (Crocs, HeyDude) with Style Dictionary, enabling runtime theming and brand-specific overrides."
+date: 2025-08-15T05:00:00Z
+author: "Andrew Bumpas"
+tags: ["Design Tokens", "Style Dictionary", "Multi-brand", "Architecture", "SCSS", "CSS Variables"]
+featured: false
+skills: ["Design Tokens", "Style Dictionary", "SCSS", "CSS Custom Properties", "Brand Strategy"]
+impact:
+  - label: "Brands Supported"
+    value: "2"
+  - label: "Token Categories"
+    value: "8+"
+  - label: "Output Formats"
+    value: "SCSS, JS, CSS"
+  - label: "Token Sets"
+    value: "Global + 2 Brand"
+---
+
+## The Challenge
+
+Crocs operates two distinct brands (Crocs and HeyDude) with different visual identities but shared component architecture. The challenge was to:
+- Support brand-specific styling without duplicating components
+- Enable runtime theme switching without component changes
+- Maintain a single source of truth for design decisions
+- Make token consumption easy for both SCSS and JavaScript
+
+Previous approaches relied on hardcoded overrides scattered throughout component styles, making maintenance difficult and scaling impossible.
+
+## The Solution
+
+Architected a token system using **Style Dictionary** that generates multiple output formats from a single source of truth.
+
+**Token Organization:**
+```
+src/tokens/
+├── global/          # Shared across brands (elevation, sizing, fonts)
+│   ├── elevation/
+│   ├── font/
+│   └── size/
+├── crocs/           # Crocs brand tokens
+│   ├── color/       # Crocs brand colors
+│   ├── button/      # Component-specific overrides
+│   └── icons/
+└── heydude/         # HeyDude brand tokens
+    ├── color/       # HeyDude brand colors
+    ├── button/      # Component-specific overrides
+    └── icons/
+```
+
+**Style Dictionary Pipeline:**
+- **Source**: Token JSON files organized by brand and category
+- **Build**: Style Dictionary transforms tokens into multiple formats
+- **Output Formats**:
+  - `_tokens.scss` — SCSS variables for legacy SCSS consumption
+  - `_color.scss`, `_font.scss`, etc. — Categorical files for selective importing
+  - `_css-vars.scss` — CSS custom properties with brand selectors for runtime theming
+  - `tokens.js` — ES6 module exports for JavaScript consumers
+
+**Multi-Brand Runtime Theming:**
+```scss
+/* CSS custom properties scoped by data-attribute */
+html[data-brand="crocs"] {
+  --color-primary: #0077be;
+  --color-secondary: #00a8e1;
+}
+
+html[data-brand="heydude"] {
+  --color-primary: #1a1a1a;
+  --color-secondary: #ff6b35;
+}
+```
+
+Components automatically switch colors based on the active brand selector.
+
+**Token Categories:**
+- **Colors**: Brand primary, secondary, neutrals, semantic (error, success, warning)
+- **Typography**: Font families, sizes, weights, line heights
+- **Spacing**: Sizing scale (4px, 8px, 16px, 24px, etc.)
+- **Elevation/Shadow**: Shadow depths for layering
+- **Icons**: SVG assets processed and converted to token references
+- **Sizing**: Component dimensions and sizing scales
+- **Component Tokens**: Button, card, input variants and states
+
+## Key Implementation Details
+
+**Preprocessing Pipeline:**
+```bash
+npm run preprocess
+# Runs:
+# 1. process-icons.js — Converts SVG icons to token references
+# 2. style-dictionary build — Transforms token JSON to SCSS/JS/CSS
+```
+
+**Token Naming Convention:**
+Consistent naming across categories enabling predictable consumption:
+```json
+{
+  "color": {
+    "primary": {
+      "base": "#0077be",
+      "light": "#e3f2fd",
+      "dark": "#00539b"
+    }
+  }
+}
+// Generates: $color-primary-base, $color-primary-light, etc.
+```
+
+**Component Token Usage:**
+Components reference tokens instead of hardcoded values:
+```scss
+.ok-button {
+  background-color: var(--color-primary);
+  color: var(--color-text-inverse);
+  padding: var(--size-spacing-2) var(--size-spacing-4);
+  font-family: var(--font-family-base);
+}
+```
+
+**Build Configuration:**
+```javascript
+// .style-dictionary/config.mjs
+export const getStyleDictionaryConfig = (brand) => ({
+  source: [`src/tokens/${brand}/**/*.json`],
+  platforms: {
+    scss: { /* SCSS variables */ },
+    'scss-categories': { /* Categorical SCSS files */ },
+    css: { /* CSS custom properties */ },
+    js: { /* JavaScript ESM */ }
+  }
+})
+```
+
+## Results
+
+- **Scalable brand support** — Adding a new brand requires only new token JSON files
+- **Runtime theme switching** — No component changes needed to swap brands
+- **Type-safe token consumption** — JavaScript exports enable TypeScript checking
+- **Backward compatibility** — SCSS variables support legacy component consumption
+- **Flexible outputs** — CSS custom properties enable CSS-in-JS libraries (Emotion, styled-components)
+- **Documentation alignment** — Tokens serve as single source of truth for design specs
+
+## Impact
+
+This token architecture proved essential for multi-brand scalability. When HeyDude joined the platform mid-project, adding brand support required only token definitions, not component refactoring.
+
+The system also enabled powerful runtime capabilities: theme switching for A/B testing, per-user brand customization, and seasonal theme variations—all without component code changes.
+
+**Key Lessons:**
+- Token systems aren't just documentation—they're architecture
+- Multi-format output (SCSS, JS, CSS) enables flexibility across consuming applications
+- Consistent naming conventions make tokens intuitive to consume
+- Preprocessing pipelines should be documented and enforced in CI to prevent build failures
+
+The tokens are published as part of the Okra npm package, enabling external teams to consume them in their own build systems.
