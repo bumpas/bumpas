@@ -110,32 +110,40 @@ const currentPath = Astro.url.pathname;
   </nav>
 </header>
 
-<style>
-  /* Header visible state when scrolled */
-  .header.is-visible {
-    transition: all 0.3s ease-in-out;
-    opacity: 1;
-    visibility: visible;
-  }
-</style>
-
 <script>
   document.addEventListener("astro:page-load", () => {
     const header = document.querySelector(".header") as HTMLElement;
-    let lastScrollY = window.scrollY;
 
+    const updateHeaderState = () => {
+      if (window.scrollY > 100) { // Page is scrolled
+        header.classList.add('is-visible'); // Add background
+      } else { // At top of page
+        header.classList.remove('-translate-y-full'); // Show header
+        header.classList.remove('is-visible'); // Remove background
+      }
+    };
+
+    // Check initial scroll position on page load
+    updateHeaderState();
+
+    let lastScrollY = window.scrollY;
     window.addEventListener('scroll', () => {
-        if (window.scrollY > lastScrollY && window.scrollY > 100) { // Scrolling down and past a threshold
-            header.classList.add('-translate-y-full'); // Hide header
-            header.classList.remove('is-visible'); // Remove visible state
-        } else if (window.scrollY < lastScrollY && window.scrollY > 100) { // Scrolling up and page is scrolled
-            header.classList.remove('-translate-y-full'); // Show header
-            header.classList.add('is-visible'); // Add visible state
-        } else if (window.scrollY <= 100) { // At top of page
-            header.classList.remove('-translate-y-full'); // Show header
-            header.classList.remove('is-visible'); // Remove visible state
-        }
-        lastScrollY = window.scrollY;
+      if (window.scrollY > lastScrollY && window.scrollY > 100) { // Scrolling down
+        header.classList.add('-translate-y-full'); // Hide header
+      } else if (window.scrollY < lastScrollY && window.scrollY > 100) { // Scrolling up
+        header.classList.remove('-translate-y-full'); // Show header
+      } else if (window.scrollY <= 100) { // At top
+        header.classList.remove('-translate-y-full'); // Show header
+      }
+      
+      // Update is-visible based on scroll position
+      if (window.scrollY > 100) {
+        header.classList.add('is-visible');
+      } else {
+        header.classList.remove('is-visible');
+      }
+      
+      lastScrollY = window.scrollY;
     });
   });
 </script>

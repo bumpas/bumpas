@@ -1,9 +1,9 @@
 .header {
-  @apply top-0 left-0 z-40 w-full py-3.5 transition-all duration-300;
+  @apply top-0 left-0 z-40 w-full py-3.5 transition-all duration-400 ease-in-out;
 }
 
 .header.is-visible {
-  @apply bg-body;
+  @apply bg-body shadow-sm;
 }
 
 /* Offset for anchor links */

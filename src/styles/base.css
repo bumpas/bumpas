@@ -3,10 +3,14 @@ html {
 }
 
 body {
-  @apply bg-body font-primary font-normal leading-relaxed text-text pt-[125px] md:pt-[150px];
+  @apply bg-body font-primary font-normal leading-relaxed text-text;
 }
 
-main::before {
+main {
+  @apply pt-[125px] md:pt-[150px];
+}
+
+body::before {
   content: '';
   background-size: 30px 30px;
   background-image: radial-gradient(circle at 1px 1px, #7b8188 1px, transparent 0);
@@ -16,7 +20,7 @@ main::before {
   height: 100vh;  
 }
 
-main::after {
+body::after {
   content: '';
   background-image: radial-gradient(ellipse 45% 65% at 82% 42%, #EEF2F700 0%, #EEF2F7B3 45%, #F3F5F8 80%);
   background-repeat: no-repeat;
